@@ -1,0 +1,38 @@
+@startuml
+interface work4.task1.TaskObserver {
+~ void update(String,String)
+}
+
+class work4.task1.Manager {
++ void update(String,String)
+}
+
+class work4.task1.Client {
++ void update(String,String)
+}
+
+class work4.task1.Developer {
++ void update(String,String)
+}
+
+class work4.task1.Task {
+- String name
+- String status
+- List<TaskObserver> observers
++ void addObserver(TaskObserver)
++ void removeObserver(TaskObserver)
++ void setStatus(String)
+- void notifyObservers()
+}
+
+
+class work4.task1.Maintask1 {
++ {static} void main(String[])
+}
+
+
+
+work4.task1.TaskObserver <|.. work4.task1.Manager
+work4.task1.TaskObserver <|.. work4.task1.Client
+work4.task1.TaskObserver <|.. work4.task1.Developer
+@enduml

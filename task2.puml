@@ -1,0 +1,31 @@
+@startuml
+class work4.task2.Maintask2 {
++ {static} void main(String[])
+}
+
+class work4.task2.PolarCoordinateSystem {
++ void plot(Function<Double,Double>,double,double)
+}
+
+class work4.task2.CartesianCoordinateSystem {
++ void plot(Function<Double,Double>,double,double)
+}
+
+interface work4.task2.CoordinateSystem {
+~ void plot(Function<Double,Double>,double,double)
+}
+
+class work4.task2.MathFunction {
+- Function<Double,Double> function
+- CoordinateSystem coordinateSystem
++ void setCoordinateSystem(CoordinateSystem)
++ void setFunction(Function<Double,Double>)
++ void displayGraph(double,double)
+}
+
+
+
+
+work4.task2.CoordinateSystem <|.. work4.task2.PolarCoordinateSystem
+work4.task2.CoordinateSystem <|.. work4.task2.CartesianCoordinateSystem
+@enduml

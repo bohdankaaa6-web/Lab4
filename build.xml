@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="lab3" default="generate-javadoc" basedir=".">
+
+    <!-- Визначення властивостей  -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="doc.dir" value="doc"/>
+
+    <!-- Ціль для очищення (видалення) білд-тек -->
+    <target name="clean">
+        <echo message="Cleaning build and doc directories..."/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+
+    <!-- Ціль для підготовки необхідних тек -->
+    <target name="prepare">
+        <echo message="Preparing build and doc directories..."/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+    </target>
+
+    <!-- Ціль для генерації JavaDoc -->
+    <target name="generate-javadoc">
+
+        <!-- Створюємо директорію для JavaDoc, використовуючи властивість ${doc.dir} -->
+        <mkdir dir="${doc.dir}"/>
+
+        <!-- Генерація JavaDoc -->
+        <javadoc
+                destdir="${doc.dir}"
+                sourcepath="${src.dir}"
+                packagenames="*.*"
+                charset="UTF-8"
+                windowtitle="Lab3 API Documentation"
+                doctitle="Lab3 - Документація API">
+
+            <!-- Включаємо всі .java файли з теки ${src.dir} -->
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
+        </javadoc>
+    </target>
+</project>
